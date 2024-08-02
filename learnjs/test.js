@@ -1,8 +1,9 @@
-function orderPizza() {
+function orderPizza(callback) {
     console.log("Preparing");
     setTimeout(() => {
         // console.log("Pizza prepared");
-        pizzaIsReady();
+        // pizzaIsReady();
+        callback();
     }, 5000);
     
 }
@@ -13,4 +14,5 @@ function pizzaIsReady() {
     
 }
 console.log("Open Ucampus");
-orderPizza();
+orderPizza(pizzaIsReady);
+
