@@ -58,8 +58,9 @@ function getWeather() {
 getWeather().then(      // first function is runs "on acceptance"    // 2nd function "On Rejection"
     function method1(data) {
         console.log("OnFulfilled",data);
-    },
-    function method2(data){
+    })
+
+    .catch(function method2(data){
         console.log("onRejected",data);
     }
 )
