@@ -5,6 +5,9 @@
 //         // pizzaIsReady();
 //         callback();
 //     }, 5000);
+
+const { response } = require("express");
+
     
 // }
 
@@ -36,7 +39,7 @@ function getLocation(){
 
 */
 
-//Promise
+//     -----------------------Promise------------------------
 
 //Promise Maker
 
@@ -46,42 +49,42 @@ function getLocation(){
 
 // Pending , Resolved , Rejected
 
-function getWeather() {
-    return new Promise((resolve,reject)=>{
-        setTimeout(()=>{
-            console.log("getting weather data");
-            resolve("Winter");     // for resolve
-            // reject("no weather data");   // for rejectioon
-        },1000);
-    });
-}
+// function getWeather() {
+//     return new Promise((resolve,reject)=>{
+//         setTimeout(()=>{
+//             console.log("getting weather data");
+//             resolve("Winter");     // for resolve
+//             // reject("no weather data");   // for rejectioon
+//         },1000);
+//     });
+// }
 
-function getWeatherDetails(data) {
-    return new Promise((resolve,reject)=>{
-        setTimeout(() => {
-            switch (data) {
-                case "Rainy":
-                    resolve("Rainy weather data");
-                    break;
-                case "Summer":
-                    resolve("Summer weather data");
-                    break;
-                default:
-                    reject("No data available");
-            }
-        },2000);
-    });
-}
+// function getWeatherDetails(data) {
+//     return new Promise((resolve,reject)=>{
+//         setTimeout(() => {
+//             switch (data) {
+//                 case "Rainy":
+//                     resolve("Rainy weather data");
+//                     break;
+//                 case "Summer":
+//                     resolve("Summer weather data");
+//                     break;
+//                 default:
+//                     reject("No data available");
+//             }
+//         },2000);
+//     });
+// }
 
-const onSuccess = function method1(data){
-    console.log("onfullfilled",data);
-};
+// const onSuccess = function method1(data){
+//     console.log("onfullfilled",data);
+// };
 
-const onError = function method2(data){
-    console.log("onrejected",data);
-}
-getWeather().then(getWeatherDetails).then(onSuccess).catch(onError);
-
+// const onError = function method2(data){
+//     console.log("onrejected",data);
+// }
+// getWeather().then(getWeatherDetails).then(onSuccess).catch(onError);
+// -----------------------------------------------------simplified -------------------------------------------
 // getWeather().then(      // first function is runs "on acceptance"    // 2nd function "On Rejection"
 //     function method1(data) {
 //         console.log("OnFulfilled",data);
@@ -91,3 +94,19 @@ getWeather().then(getWeatherDetails).then(onSuccess).catch(onError);
 //         console.log("onRejected",data);
 //     }
 // )
+
+// ----------------------part of promise --------------------------------
+
+
+//-------------------------------------------------------------------------fetch---------------------------------------------------------------
+fetch("http://localhost:5000/")
+.then((response)=>{
+    return response.json();
+})
+.then((data)=>{
+    console.log(data);
+});
+
+// app.get("/",(req,res)=>{
+//     res.send("API home");
+// });
