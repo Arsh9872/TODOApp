@@ -14,5 +14,6 @@ function pizzaIsReady() {
     
 }
 console.log("Open Ucampus");
-orderPizza(pizzaIsReady);
+orderPizza(pizzaIsReady);     // we cant use pizzaIsReady() as a function as it will stuck and produce error we have to pass the arugment as a callback
 
+//
