@@ -49,9 +49,10 @@ function getLocation(){
 function getWeather() {
     return new Promise((resolve,reject)=>{
         setTimeout(()=>{
+            console.log("getting weather data");
             resolve("Winter");     // for resolve
             // reject("no weather data");   // for rejectioon
-        },3000);
+        },1000);
     });
 }
 
@@ -68,7 +69,7 @@ function getWeatherDetails(data) {
                 default:
                     reject("No data available");
             }
-        });
+        },2000);
     });
 }
 
