@@ -49,7 +49,7 @@ function getLocation(){
 function getWeather() {
     return new Promise((resolve,reject)=>{
         setTimeout(()=>{
-            resolve("Rainy");     // for resolve
+            resolve("Winter");     // for resolve
             // reject("no weather data");   // for rejectioon
         },3000);
     });
