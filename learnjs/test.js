@@ -49,18 +49,44 @@ function getLocation(){
 function getWeather() {
     return new Promise((resolve,reject)=>{
         setTimeout(()=>{
-            // resolve("Rainy");     // for resolve
-            reject("no weather data");   // for rejectioon
+            resolve("Rainy");     // for resolve
+            // reject("no weather data");   // for rejectioon
         },3000);
     });
 }
 
-getWeather().then(      // first function is runs "on acceptance"    // 2nd function "On Rejection"
-    function method1(data) {
-        console.log("OnFulfilled",data);
-    })
+function getWeatherDetails(data) {
+    return new Promise((resolve,reject)=>{
+        setTimeout(() => {
+            switch (data) {
+                case "Rainy":
+                    resolve("Rainy weather data");
+                    break;
+                case "Summer":
+                    resolve("Summer weather data");
+                    break;
+                default:
+                    reject("No data available");
+            }
+        });
+    });
+}
 
-    .catch(function method2(data){
-        console.log("onRejected",data);
-    }
-)
+const onSuccess = function method1(data){
+    console.log("onfullfilled",data);
+};
+
+const onError = function method2(data){
+    console.log("onrejected",data);
+}
+getWeather().then(getWeatherDetails).then(onSuccess).catch(onError);
+
+// getWeather().then(      // first function is runs "on acceptance"    // 2nd function "On Rejection"
+//     function method1(data) {
+//         console.log("OnFulfilled",data);
+//     })
+   
+//     .catch(function method2(data){
+//         console.log("onRejected",data);
+//     }
+// )
