@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- // Blocking        :  Synchronous
+    // Non-Blocking    :  Asynchronous -->
+
+
+    <!-- // Synchronous : one after another or in continous order  opposite for Asynchronous. -->
+
+    <h2>Blocking vs Non-Blocking</h2>
+    <button id="start">Start</button>
+    <div class="status"></div>
+    <script>
+        const buttonElement = document.getElementById("start");
+        const divElement = document.getElementById("status");
+
+        buttonElement.addEventListener("click",()=>{
+            // setTimeout(()=>{
+
+            // },3000)
+
+            NonBlocking();
+        });
+
+        function Blocking(){
+            const startDate = Date.now();
+            const endDate = startDate + 5000;
+            while (Date.now() < endDate) {
+                // long running task
+            }
+        }
+
+        function NonBlocking() {
+            setTimeout(()=>{
+                divElement.innerText = "Async operation completed"
+            },5000)
+        }
+
+    </script>
+
+
+
+</body>
+</html>
