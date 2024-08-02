@@ -16,4 +16,22 @@ function pizzaIsReady() {
 console.log("Open Ucampus");
 orderPizza(pizzaIsReady);     // we cant use pizzaIsReady() as a function as it will stuck and produce error we have to pass the arugment as a callback
 
-//
+// Callback hell or pyramid of doom      == one function will call another function and call another function and go on
+// function method1(callback) {
+// ....callback(method2(callback2))
+// .........method3(callback3)
+//   }
+
+/*
+
+function getLocation(){
+    function getLAtLong(){
+        function getWeather(){
+            function getWeatherDetails(){
+                .....
+            }
+        }
+    }
+}
+
+*/
