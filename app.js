@@ -23,6 +23,8 @@ const start = async () => {    //async = code/DB is time taking
 
 start();
 
+
+
 // ANother way
 
 // connecDb.then(()=>{
