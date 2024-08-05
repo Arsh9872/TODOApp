@@ -118,10 +118,18 @@ function getLocation(){
 // const result = fetch("https://jsonplaceholder.typicode.com/users")
 // console.log(result);
 
-fetch("https://jsonplaceholder.typicode.com/users").then((response)=>
-// console.log(response.json())
-response.json()
-).then((data)=> console.log(data));
+// fetch("https://jsonplaceholder.typicode.com/users").then((response)=>
+// // console.log(response.json())
+// response.json()
+// ).then((data)=> console.log(data));
 
 
 // ASYNC WAIT
+async function fetchData(url) {
+    const responseData = await fetch(url);
+    const jsonData = await responseData.json();
+    console.log(jsonData);
+    
+    
+}
+fetchData("https://jsonplaceholder.typicode.com/users");
