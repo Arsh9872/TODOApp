@@ -125,11 +125,69 @@ function getLocation(){
 
 
 // ASYNC WAIT
-async function fetchData(url) {
-    const responseData = await fetch(url);
-    const jsonData = await responseData.json();
-    console.log(jsonData);
+// async function fetchData(url) {
+//     const responseData = await fetch(url);
+//     const jsonData = await responseData.json();
+//     console.log(jsonData);
     
     
+// }
+// fetchData("https://jsonplaceholder.typicode.com/users");
+
+
+// async function fetchData(url) {
+//     const responseData = await fetch(url);
+//     const jsonData = await responseData.json();
+//     console.log(jsonData);
+    
+    
+// }
+// fetchData("https://geocoding-api.open-meteo.com/v1/search?name=paris");
+
+// const cityName = "Paris";
+// https://geocoding-api.open-meteo.com/v1/search?name=${cityName}
+// const latitude = ?
+// const longitude = ?
+// https://api.open-meteo.com/v1/forecast?latitude=48.85341&longitude=2.3488&current_weather=true
+// console.log(weather);
+
+// cityName ="Paris" ;
+
+// async function fetchData(url) {
+//     const responseData = await fetch(url);
+//     const jsonData = await responseData.json();
+//     console.log(jsonData);
+    
+    
+// }
+// const data = fetchData(`https://geocoding-api.open-meteo.com/v1/search?name=${cityName}`);
+
+
+
+const cityName = "Paris";
+
+async function fetchWeather() {
+    try {
+        
+        const FetchUrl = `https://geocoding-api.open-meteo.com/v1/search?name=${cityName}`;
+        const ResponseData = await fetch(FetchUrl);
+        const geoData = await ResponseData.json();
+
+        
+        if (geoData.results && geoData.results.length > 0) {
+            const { latitude, longitude } = geoData.results[0];
+
+            const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true`;
+            const weatherResponse = await fetch(weatherUrl);
+            const weatherData = await weatherResponse.json();
+
+            console.log("Temperature:", weatherData.current_weather.temperature);
+        } else {
+            console.log("City not found");
+        }
+    } catch (error) {
+        console.error("Error fetching data:", error);
+    }
 }
-fetchData("https://jsonplaceholder.typicode.com/users");
+
+fetchWeather();
