@@ -117,3 +117,7 @@ function getLocation(){
 
 // const result = fetch("https://jsonplaceholder.typicode.com/users")
 // console.log(result);
+
+fetch("https://jsonplaceholder.typicode.com/users").then((response)=>
+console.log(response)
+);
