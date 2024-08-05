@@ -119,6 +119,6 @@ function getLocation(){
 // console.log(result);
 
 fetch("https://jsonplaceholder.typicode.com/users").then((response)=>
-// console.log(response.json())
-response.json()
-).then
+console.log(response.json())
+// response.json()
+);
