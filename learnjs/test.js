@@ -146,9 +146,9 @@ function getLocation(){
 
 // const cityName = "Paris";
 // https://geocoding-api.open-meteo.com/v1/search?name=${cityName}
-// const latitude = ?
-// const longitude = ?
-// https://api.open-meteo.com/v1/forecast?latitude=48.85341&longitude=2.3488&current_weather=true
+// const lat = ?
+// const lon = ?
+// https://api.open-meteo.com/v1/forecast?lat=48.85341&lon=2.3488&current_weather=true
 // console.log(weather);
 
 // cityName ="Paris" ;
@@ -164,7 +164,11 @@ function getLocation(){
 
 
 
-const cityName = "Paris";
+
+// method 1
+
+
+const cityName = "Rajpura";
 
 async function fetchWeather() {
     try {
@@ -174,20 +178,46 @@ async function fetchWeather() {
         const geoData = await ResponseData.json();
 
         
-        if (geoData.results && geoData.results.length > 0) {
-            const { latitude, longitude } = geoData.results[0];
 
-            const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true`;
-            const weatherResponse = await fetch(weatherUrl);
-            const weatherData = await weatherResponse.json();
+        const { lat, lon } = geoData.results[0];
 
-            console.log("Temperature:", weatherData.current_weather.temperature);
-        } else {
-            console.log("City not found");
-        }
+        const weatherUrl = `https://api.open-meteo.com/v1/forecast?lat=${lat}&lon=${lon}&current_weather=true`;
+        const weatherResponse = await fetch(weatherUrl);
+        const weatherData = await weatherResponse.json();
+
+        console.log("Temperature:", weatherData.current_weather.temperature);
+    
     } catch (error) {
         console.error("Error fetching data:", error);
     }
 }
 
 fetchWeather();
+
+
+// method 2
+
+// const getweatherdata = async (url) => {
+//     try {
+//         const response = await fetch(url);
+//         const data = await response.json();
+//         // console.log(data);
+
+
+//         const lat = data.results[0].latitude;
+//         const long = data.results[0].longitude;
+//         const weatherUrl = https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&current_weather=true;
+//         const weatherResponse = await fetch(weatherUrl);
+//         const weatherData = await weatherResponse.json();
+//         // console.log(weatherData);
+        
+//         console.log("Temperature:", weatherData.current_weather.temperature);
+//     } catch (error) {
+//         console.error("Error fetching data:", error);
+//     }
+// }
+
+// const cityName="Rajpura";
+// const url=https://geocoding-api.open-meteo.com/v1/search?name=${cityName};
+// getweatherdata(url);
+
