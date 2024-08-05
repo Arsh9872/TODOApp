@@ -99,14 +99,21 @@ function getLocation(){
 
 
 //-------------------------------------------------------------------------fetch---------------------------------------------------------------
-fetch("http://localhost:5000/")
-.then((response)=>{
-    return response.json();
-})
-.then((data)=>{
-    console.log(data);
-});
+// fetch("http://localhost:5000/")
+// .then((response)=>{
+//     return response.json();
+// })
+// .then((data)=>{
+//     console.log(data);
+// });
 
 // app.get("/",(req,res)=>{
 //     res.send("API home");
 // });
+
+
+
+// fetch  user data with API
+
+// const result = fetch("https://jsonplaceholder.typicode.com/users")
+// console.log(result);
