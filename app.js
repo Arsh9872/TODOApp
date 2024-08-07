@@ -73,7 +73,7 @@ app.post("/api/v1/todos",(req,res)=>{
 
 
 // READ/ GET SINGLE TODO
-app.get("/api/v1/todos",async(req,res)=>{
+app.get("/api/v1/todos/:id",async(req,res)=>{
 
     try {
         const {id} = req.params;
@@ -102,9 +102,23 @@ app.patch("/api/v1/todos/:id",(req,res)=>{
 
 // DELETE/ delete TODO
 app.delete("/api/v1/todos/:id",(req,res)=>{
-    const {id} = req.params; 
+
+    try {
+        const {id} = req.params; 
     //delete the todo in db for given id
+    const result = TodoModel.findByIdAndDelete(id);
+    console.log(result);
+    
     res.status(200).json({message: "TODO deleted"});
+        
+    } catch (error) {
+        res.status(500).json({message:error});
+    }
+
+    // const {id} = req.params; 
+    // //delete the todo in db for given id
+    // const result = TodoModel.findByIdAndDelete(id);
+    // res.status(200).json({message: "TODO deleted"});
 });
 
 // GET ALL TODOS
