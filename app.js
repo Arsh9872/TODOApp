@@ -101,12 +101,15 @@ app.patch("/api/v1/todos/:id",(req,res)=>{
 });
 
 // DELETE/ delete TODO
-app.delete("/api/v1/todos/:id",(req,res)=>{
+app.delete("/api/v1/todos/:id",async (req,res)=>{
 
     try {
         const {id} = req.params; 
     //delete the todo in db for given id
-    const result = TodoModel.findByIdAndDelete(id);
+    const deletedTodo = await TodoModel.findByIdAndDelete(id);
+    if(!deletedTodo){
+        res.status(404).json({message: "Not Found"})
+    }
     console.log(result);
     
     res.status(200).json({message: "TODO deleted"});
@@ -122,9 +125,15 @@ app.delete("/api/v1/todos/:id",(req,res)=>{
 });
 
 // GET ALL TODOS
-app.get("/api/v1/todos",(req,res)=>{
-    //get all the todos from DB
-    res.status(200).json({message: "TODO fetched"});
+app.get("/api/v1/todos",async (req,res)=>{
+    try {
+        //get all the todos from DB
+    const todos = await TodoModel.find({});
+    res.status(200).json({message: todos});
+    } catch (error) {
+        res.status(500).json({message:error});
+    }
+    
 });
 
 
