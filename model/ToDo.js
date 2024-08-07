@@ -3,10 +3,24 @@ const mongoose = require("mongoose");
 //craeting the structure of document = schema
 // defining the fields and their types
 const ToDoSchema = new mongoose.Schema({
-  createdOn: Date,
-  title: String,
-  description: String,
-  completed: Boolean,
+  createdOn:{ 
+    type:Date,
+  },
+  title: {
+    type: String,
+    required:true,
+    trim:true,
+    maxlength:20,
+  },
+  description: {
+    type: String,
+    required:true,
+    trim:true,
+    maxlength:20,
+  },
+  completed: {
+    type: Boolean,
+  }
 });
 
 // Schema is the structure of Documnet / model
