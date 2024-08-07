@@ -15,11 +15,12 @@ const ToDoSchema = new mongoose.Schema({
   description: {
     type: String,
     required:true,
-    trim:true,
-    maxlength:20,
+    trim:true,     // removing the space before and after
+    maxlength:120,
   },
   completed: {
     type: Boolean,
+    default:false,
   }
 });
 

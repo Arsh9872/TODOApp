@@ -50,11 +50,25 @@ app.get("/",(req,res)=>{
 
 // CREATE/POST
 app.post("/api/v1/todos",(req,res)=>{
-    const data = req.body;
-    const ToDo = TodoModel.create(req.body);
-    console.log(ToDo);
-    //add to db
-    res.status(201).json({"mesage":"TODO created"})
+    // error handling for validations
+    try {
+        const ToDo = TodoModel.create(req.body);
+        if(!ToDo){
+            res.status(404).json({message:"Coudn't create"});
+        }
+        // add to db
+        res.status(201).json({message: ToDo});
+    }
+     catch (error) {
+        res.status(500).json({message:error});
+        
+    }
+
+    // const data = req.body;
+    // const ToDo = TodoModel.create(req.body);
+    // console.log(ToDo);
+    // //add to db
+    // res.status(201).json({"mesage":"TODO created"})
 });
 
 
