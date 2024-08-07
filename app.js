@@ -73,10 +73,23 @@ app.post("/api/v1/todos",(req,res)=>{
 
 
 // READ/ GET SINGLE TODO
-app.get("/api/v1/todos",(req,res)=>{
-    const {id} = req.params;
-    // fetch data from db
-    res.status(201).json({message: "TODO fetched"});
+app.get("/api/v1/todos",async(req,res)=>{
+
+    try {
+        const {id} = req.params;
+        //fetch data from db
+        const Todo = await TodoModel.findById(id);
+        if(!Todo){
+            res.status(404).json("Not Found");
+        }
+        res.status(200).json({message: Todo});
+    } catch (error) {
+        res.status(500).json({message:error});
+    }
+
+    // const {id} = req.params;
+    // // fetch data from db
+    // res.status(201).json({message: "TODO fetched"});
 });
 
 // UPDATE/ PATCH
