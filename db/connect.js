@@ -12,8 +12,9 @@ const { default: mongoose } = require("mongoose");
 // }
 
 const connecDB = (url) => { 
-    mongoose.connect("mongodb://localhost:27017/tododb")
-};
+    // mongoose.connect("mongodb://localhost:27017/tododb")
+    mongoose.connect(url);
 
+};
 
   module.exports = connecDB;
