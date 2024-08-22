@@ -6,7 +6,10 @@
     <title>Document</title>
 </head>
 <body>
-    <h2>List of ToDos</h2>
-    
+    <h2><u>List of ToDos</u></h2>
+    <% todos.forEach(todo => { %>
+     <h3><%= todo.title %></h3>
+     <p><%= todo.description %></p>
+    <% }) %>
 </body>
 </html>
