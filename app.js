@@ -25,9 +25,15 @@ app.set("view engine","ejs");      // using ejs template
 app.use(cors());               // single origion port/point   // cross origion requests
 // for handling json data
 app.use(express.json());
+//for static files, public folder will be used
+app.use(express.static("public"));
 
 app.get("/",(req,res)=>{
-  res.send("<h2> Home Page</h2> ")
+  // res.send("<h2> Home Page</h2> ");
+  res.render("index.ejs",
+    {
+    title: "ToDos",
+  });
 });
 
 // all requests with go to router
