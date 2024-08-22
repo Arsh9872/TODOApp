@@ -36,6 +36,10 @@ app.get("/",(req,res)=>{
   });
 });
 
+app.get("/todospage",(req,res)=>{
+  res.render("todospage.ejs",{ todos });
+})
+
 // all requests with go to router
 app.use("/api/v1/todos", router);
 // invalid request

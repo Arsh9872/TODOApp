@@ -16,7 +16,8 @@ const getAllTodos = asyncWrapper(async (req, res) => {
   // get all the todos from DB
   const todos = await TodoModel.find({});
   console.log(todos);
-  res.status(200).json({ message: todos });
+  // res.status(200).json({ message: todos });
+  res.render("todospage.ejs")
 });
 
 const createToDo = asyncWrapper(async (req, res, next) => {
