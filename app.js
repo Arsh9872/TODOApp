@@ -3,6 +3,7 @@ const connecDb = require("./db/connect");
 
 // const connecDB = require("./db/connect");
 require("dotenv").config();
+require("ejs");
 // const TodoModel = require("./model/ToDo.js");
 const notfound = require("./middleware/notfound.js");
 const router = require("./routes/todo.js");
@@ -13,16 +14,31 @@ const errorHandler = require("./middleware/CustomErrorHandler.js");
 const PORT = 5000;
 
 const app = express();
+
+// app level setting
+
+app.set("view engine","ejs");      // using ejs template
+
+
 //middleware
+
 app.use(cors());               // single origion port/point   // cross origion requests
 // for handling json data
 app.use(express.json());
+
+app.get("/",(req,res)=>{
+  res.send("<h2> Home Page</h2> ")
+});
+
 // all requests with go to router
 app.use("/api/v1/todos", router);
 // invalid request
 app.use(notfound);
 
 app.use(errorHandler);
+
+
+
 
 const start = async () => {
   //async = code/DB is time taking
