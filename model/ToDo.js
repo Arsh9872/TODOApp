@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 
 //craeting the structure of document = schema
 // defining the fields and their types
+
 const ToDoSchema = new mongoose.Schema({
   createdOn:{ 
     type:Date,
@@ -37,5 +38,9 @@ const ToDoModel = mongoose.model("ToDo",ToDoSchema);     //("Document name","Sch
 // console.log("ToDoModel", ToDoModel);
 
 
-module.exports=ToDoModel;
 
+
+
+
+//
+module.exports=ToDoModel;

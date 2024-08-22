@@ -163,6 +163,9 @@ function getLocation(){
 // const data = fetchData(`https://geocoding-api.open-meteo.com/v1/search?name=${cityName}`);
 
 
+// ----------------------------- problem to understand concept
+
+
 
 const cityName = "Paris";
 
@@ -189,3 +192,37 @@ async function fetchWeather() {
 }
 
 fetchWeather();
+
+
+
+ ///      2nd method
+ 
+
+
+
+
+// async function fetchData(url) {
+//     try {
+//       const responseData = await fetch(url);
+//       const jsonData = await responseData.json();
+//       return jsonData;
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   }
+  
+//   const cityName = "Tokyo";
+//   fetchData(`https://geocoding-api.open-meteo.com/v1/search?name=${cityName}`)
+//     .then((data) => {
+//       const latitude = data.results[0].latitude;
+//       const longitude = data.results[0].longitude;
+//       const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true`;
+//       return url;
+//     })
+//     .then((url) => {
+//       return fetchData(url);
+//     })
+//     .then((data) => {
+//       console.log(data.current_weather.temperature);
+//     });
+  
